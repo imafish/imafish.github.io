@@ -1,9 +1,6 @@
-# Hello, World.
+# Imafish's IT 笔记
 
-test markdown
 
-| col1 | col2 | col3 |
-| ---- | ---- | ---- |
-| row2 | row2 | row2 |
-
+## 目录
+[Ubuntu 折腾笔记](ubuntu/index)
 
