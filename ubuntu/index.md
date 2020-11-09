@@ -30,11 +30,17 @@ config.yaml文件则从nplus.icu网站获取URL进行下载
 
 至此梯子已经搭好，配置Chrome插件或系统代理来使用梯子。
 
-__TO BE CONTINUED...__  
-TODO: 似乎网页版配置工具无法保存到配置文件，每次启动都需要重新设置。找到能保存配置的方法。自动启动clash；创建自动更新配置脚本/工具。
+## clash自启动
+详见[clash](clash.md)  
+
+NOTE: 由于目前没有找到clash的UI工具，无法配置默认代理，每次都使用clash.razord.top十分不方便。  
+当前的办法是编辑下载的config.yaml文件，在proxy数组中把想用的代理挪到第一位。这样clash就启动时会自动选择该代理。
+
+## 自动更新配置及IP数据库
 
 
-__P.S.__: 查资料的时候发现了几个其他备选机场。希望需要的时候不会突然消失不见：  
+## 备选机场
+查资料的时候发现了几个其他备选机场。希望需要的时候不会突然消失不见：  
 [喷射流](https://jetstream.zendesk.com/hc/zh-tw): 使用clash作为首选linux client。或许对新版本的支持会好一些？  
 [DuangCloud](https://www.dcrelay.me/)：卡在注册登录页面
 
@@ -101,9 +107,26 @@ sudo dpkg -i linux-*.deb
 
 
 ## 合盖休眠
+似乎安装好5.6内核和显卡驱动这个笔记本已经支持了合盖休眠。观察中。
+
 参考： https://www.cnblogs.com/pipci/p/12544232.html  
 https://www.cnblogs.com/feipeng8848/p/9693137.html
 
+
+# 常用软件
+
+## WPS
+[WPS](http://linux.wps.com/)  
+WPS启动时候会提示缺少字体。可以到[这里](https://github.com/IamDH4/ttf-wps-fonts)下载安装。
+
+## VLC
+VLC: `sudo apt install vlc`
+
+目前vlc已知的bug：  
+当播放视频时，点击右上角的‘x’关闭窗口，vlc会假死没有响应，只能强行杀掉。解决方法是播放完视频按ctrl+Q退出而不要按‘x’。
+
+### VLC自动搜索、下载并加载字幕
+Working on it...
 
 # TODO
 - 梯子
