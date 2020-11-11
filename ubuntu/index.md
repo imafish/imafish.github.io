@@ -126,7 +126,7 @@ VLC: `sudo apt install vlc`
 当播放视频时，点击右上角的‘x’关闭窗口，vlc会假死没有响应，只能强行杀掉。解决方法是播放完视频按ctrl+Q退出而不要按‘x’。
 
 ### VLC自动搜索、下载并加载字幕
-Working on it...
+TODO: Working on it...
 
 # TODO
 - 梯子
