@@ -36,6 +36,27 @@ rcS.d 中的‘S’为“Startup”，所有runlevel均需要的脚本可以放�
 
 # 常用命令
 
+## sed
+sed用来进行文字处理
+
+`sed [OPTION]... {script-only-if-no-other-script} [input-file]...`
+
+其中：
+- -e 后的命令行作为命令脚本;
+- 或者，-f 后指定的文件内容为命令脚本;
+- 或者，如果没有-e和-f，则第一个非参数命令行作为脚本，其余的非参数命令行为输入文件。
+- -i 直接修改源文件
+
+sed可以：
+- 替换文件中文本（`[range]s/<regex>/<replacement>/<parameter>` s命令）
+- 删除行（d命令）
+- append或insert文本（a或i命令）
+
+sed中的正则表达式：
+- sed的正则为POSIX正则，不支持\d, \s等。需要使用[[:digit:]]代替
+- 如果不使用-E (extended)参数，‘[’需要被转义才能得到字面上的'['字符，否则为特殊字符; 其他的特殊字符不转义则是字面字符; 如果需要其特殊意义则需要转义。
+- 使用-E，效果待研究
+
 # VIM
 
 # X桌面
