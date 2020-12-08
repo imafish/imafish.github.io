@@ -106,6 +106,14 @@ sudo dpkg -i linux-*.deb
 目前暂时使用第二种临时解决一下。TODO：以后更新签名内核的步骤
 
 
+## 触摸板三指滑动
+fusuma是一个使用ruby编写的触摸板监控程序。配合xdotool可以实现三指滑动切换程序、桌面等操作。  
+- 具体安装参考 https://github.com/iberianpig/fusuma  
+- 示例配置文件：[fusuma config](fusuma.config.yml)
+- 参考clash部分，将fusuma设置为系统service自动启动。（此处有问题，fusuma设置为系统服务之后无法捕获触摸板）
+- 修改.bash_profile将fusuma设置自动启动。
+
+
 ## 合盖休眠
 似乎安装好5.6内核和显卡驱动这个笔记本已经支持了合盖休眠。观察中。
 
@@ -137,7 +145,9 @@ TODO: Working on it...
 - 驱动和配置
   - ~~显卡驱动~~
   - 亮度调节/夜晚模式
-  - 触摸板驱动 （禁止触摸板）
+  - 触摸板
+    - 三指滑动
+    - 禁用触摸板
   - 键盘快捷键
   - 合盖休眠
 
