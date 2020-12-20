@@ -4,20 +4,28 @@
 
 [[_TOC_]]
 
-# 梯子
+
+
+梯子
+=======
 
 目前使用的梯子provider为[nplus](nplus.icu)  
 客户端为clash，项目地址：[dreamacro/clash](https://github.com/Dreamacro/clash)
 
 nplus让人难受的地方是只支持clash 0.x，而clash最新1.x版本使用了新格式的配置文件。所以只能找旧的clash release使用，还不能开启自动升级。
 
-## 安装clash
+
+安装clash
+-------
+
 到 https://github.com/Dreamacro/clash/releases 下载linux-amd的安装包。注意不要选择1.x版本的，选择0.x版本。  
 解压里面的文件到~/bin文件夹。  
 给文件添加执行权限。  
 直接运行文件即可启动clash
 
-## 配置clash
+
+配置clash
+-------
 clash需要两个配置文件：~/.config/clash/config.yaml和~/.config/clash/Country.mmdb  
 其中Country.mmdb需要从Clash for Windows中复制（TODO: 寻找可用下载地址）  
 config.yaml文件则从nplus.icu网站获取URL进行下载  
@@ -30,22 +38,29 @@ config.yaml文件则从nplus.icu网站获取URL进行下载
 
 至此梯子已经搭好，配置Chrome插件或系统代理来使用梯子。
 
-## clash自启动
+
+clash自启动
+-------
 详见[clash](clash.md)  
 
 NOTE: 由于目前没有找到clash的UI工具，无法配置默认代理，每次都使用clash.razord.top十分不方便。  
 当前的办法是编辑下载的config.yaml文件，在proxy数组中把想用的代理挪到第一位。这样clash就启动时会自动选择该代理。
 
-## 自动更新配置及IP数据库
+
+自动更新配置及IP数据库
+-------
 
 
-## 备选机场
+备选机场
+-------
 查资料的时候发现了几个其他备选机场。希望需要的时候不会突然消失不见：  
 [喷射流](https://jetstream.zendesk.com/hc/zh-tw): 使用clash作为首选linux client。或许对新版本的支持会好一些？  
 [DuangCloud](https://www.dcrelay.me/)：卡在注册登录页面
 
 
-# Google Pinyin
+
+Google Pinyin
+=======
 
 ```sh
 sudo apt-get install fcitx-googlepinyin
@@ -62,16 +77,21 @@ sudo apt-get install fcitx-googlepinyin
 
 reference: https://blog.csdn.net/a805607966/article/details/105874756
 
-# 驱动和配置
 
-## 显卡驱动
 
-**AMD 显卡驱动简介**：  
+驱动和配置
+=======
+
+
+显卡驱动
+-------
+
+### AMD 显卡驱动简介：
 - 目前主流显卡驱动：AMDGPU和AMDGPU-PRO
 - 上一代显卡驱动：Radeon和Vulkan
 - AMDGPU为开源，已经整合到Linux内核；AMDGPU-PRO为 闭源。但两者性能差异不大。大多数情况开源的驱动足够。
 
-**检查正在使用的显示驱动：**  
+### 检查正在使用的显示驱动：
 ```sh
 sudo lshw -c video
 ```
@@ -88,7 +108,7 @@ TODO：sample output
 TODO：sample screenshot
 
 
-**安装驱动**  
+### 安装驱动
 开源AMDGPU驱动已经整合到linux kernel里。不过要支持4800H的核显（Renoir），需要至少5.6以上版本的Kernel。  
 当前Ubuntu 20.04 LTS的内核版本为5.4，所以需要手动安装需要的版本。  
 来到 https://kernel.ubuntu.com/~kernel-ppa/mainline/ , 选择合适的内核版本。建议不需要选择过高的版本，可能会有兼容问题。  
@@ -106,7 +126,8 @@ sudo dpkg -i linux-*.deb
 目前暂时使用第二种临时解决一下。TODO：以后更新签名内核的步骤
 
 
-## 触摸板三指滑动
+触摸板三指滑动
+-------
 fusuma是一个使用ruby编写的触摸板监控程序。配合xdotool可以实现三指滑动切换程序、桌面等操作。  
 - 具体安装参考 https://github.com/iberianpig/fusuma  
 - 示例配置文件：[fusuma config](fusuma.config.yml)
@@ -114,20 +135,26 @@ fusuma是一个使用ruby编写的触摸板监控程序。配合xdotool可以实
 - 修改.bash_profile将fusuma设置自动启动。
 
 
-## 合盖休眠
+合盖休眠
+-------
 似乎安装好5.6内核和显卡驱动这个笔记本已经支持了合盖休眠。观察中。
 
 参考： https://www.cnblogs.com/pipci/p/12544232.html  
 https://www.cnblogs.com/feipeng8848/p/9693137.html
 
 
-# 常用软件
 
-## WPS
+常用软件
+=======
+
+
+WPS
+-------
 [WPS](http://linux.wps.com/)  
 WPS启动时候会提示缺少字体。可以到[这里](https://github.com/IamDH4/ttf-wps-fonts)下载安装。
 
-## VLC
+VLC
+-------
 VLC: `sudo apt install vlc`
 
 目前vlc已知的bug：  
@@ -136,7 +163,10 @@ VLC: `sudo apt install vlc`
 ### VLC自动搜索、下载并加载字幕
 TODO: Working on it...
 
-# TODO
+
+
+TODO
+=======
 - 梯子
   - 梯子软件和配置
   - go mirror
