@@ -142,6 +142,14 @@ fusuma是一个使用ruby编写的触摸板监控程序。配合xdotool可以实
 参考： https://www.cnblogs.com/pipci/p/12544232.html  
 https://www.cnblogs.com/feipeng8848/p/9693137.html
 
+屏幕亮度调节
+-------
+目前没有找到好的使用快捷键调整屏幕亮度的方法。可用的方法为：
+```sh
+xrandr | grep " connected" | cut -f1 -d " "
+# output is the name of the connected monitor. In our case 'eDP'
+xrand --output eDP --brightness 0.5
+```
 
 
 常用软件
