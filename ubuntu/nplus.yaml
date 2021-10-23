@@ -1,0 +1,222 @@
+proxies:
+  -
+    name: 'A.台湾.Pins&Ins'
+    type: vmess
+    server: cmgz120.q-air.icu
+    port: 18810
+    uuid: da8f4c57-d022-3ccc-ae2a-a70256d68c32
+    alterId: 0
+    cipher: aes-128-gcm
+    udp: true
+    mux: true
+    tfo: true
+    network: ws
+    ws-path: /np
+    ws-headers:
+      Host: tw.52dog.icu
+  -
+    name: A.日本.GooglePlay
+    type: ss
+    server: cmgz120.q-air.icu
+    port: 18211
+    cipher: aes-128-gcm
+    password: 3tgyuq
+    udp: true
+    mux: true
+    tfo: true
+    plugin: v2ray-plugin
+    plugin-opts:
+      mode: websocket
+      tls: true
+      host: dvm-jp1.q-air.icu
+      path: /npss
+  -
+    name: A.日本.Netflix
+    type: vmess
+    server: cmgz120.q-air.icu
+    port: 18210
+    uuid: da8f4c57-d022-3ccc-ae2a-a70256d68c32
+    alterId: 0
+    cipher: aes-128-gcm
+    udp: true
+    mux: true
+    tfo: true
+    network: ws
+    ws-path: /np
+    ws-headers:
+      Host: dvm-jp1.q-air.icu
+    tls: true
+    skip-cert-verify: false
+  -
+    name: 'A.日本.Pins&Ins'
+    type: trojan
+    server: cmgz120.q-air.icu
+    port: 18221
+    password: da8f4c57-d022-3ccc-ae2a-a70256d68c32
+    sni: dvm-jp1.q-air.icu
+    tfo: true
+  -
+    name: A.日本.WhatsApp
+    type: trojan
+    server: cmgz120.q-air.icu
+    port: 18221
+    password: da8f4c57-d022-3ccc-ae2a-a70256d68c32
+    sni: dvm-jp1.q-air.icu
+    tfo: true
+  -
+    name: A.香港.优先1
+    type: trojan
+    server: cmgz120.q-air.icu
+    port: 18540
+    password: da8f4c57-d022-3ccc-ae2a-a70256d68c32
+    sni: hk.q-air.icu
+    tfo: true
+  -
+    name: A.香港.优先2
+    type: vmess
+    server: cmgz120.q-air.icu
+    port: 18550
+    uuid: da8f4c57-d022-3ccc-ae2a-a70256d68c32
+    alterId: 0
+    cipher: aes-128-gcm
+    udp: true
+    mux: true
+    tfo: true
+    network: ws
+    ws-path: /np
+    ws-headers:
+      Host: hk.q-air.icu
+    tls: true
+    skip-cert-verify: false
+  -
+    name: A.香港5.WhatsApp
+    type: trojan
+    server: ali-hk5.q-air.icu
+    port: 32443
+    password: da8f4c57-d022-3ccc-ae2a-a70256d68c32
+    sni: ali-hk5.q-air.icu
+    tfo: true
+  -
+    name: A.香港6.WhatsApp
+    type: trojan
+    server: ali-hk6.q-air.icu
+    port: 32443
+    password: da8f4c57-d022-3ccc-ae2a-a70256d68c32
+    sni: ali-hk6.q-air.icu
+    tfo: true
+  -
+    name: B.台湾.Netflix
+    type: trojan
+    server: tw.52dog.icu
+    port: 32443
+    password: da8f4c57-d022-3ccc-ae2a-a70256d68c32
+    sni: tw.52dog.icu
+    tfo: true
+  -
+    name: B.新加坡.GooglePlay
+    type: vmess
+    server: cmgz120.q-air.icu
+    port: 18410
+    uuid: da8f4c57-d022-3ccc-ae2a-a70256d68c32
+    alterId: 0
+    cipher: aes-128-gcm
+    udp: true
+    mux: true
+    tfo: true
+    network: ws
+    ws-path: /np
+    ws-headers:
+      Host: dvm-sg1.q-air.icu
+    tls: true
+    skip-cert-verify: false
+  -
+    name: B.新加坡.Google学术
+    type: ss
+    server: cmgz120.q-air.icu
+    port: 18411
+    cipher: aes-128-gcm
+    password: 3tgyuq
+    udp: true
+    mux: true
+    tfo: true
+    plugin: v2ray-plugin
+    plugin-opts:
+      mode: websocket
+      tls: true
+      host: dvm-sg1.q-air.icu
+      path: /npss
+  -
+    name: 'B.新加坡.Pins&Ins'
+    type: trojan
+    server: cmgz120.q-air.icu
+    port: 18421
+    password: da8f4c57-d022-3ccc-ae2a-a70256d68c32
+    sni: dvm-sg1.q-air.icu
+    tfo: true
+  -
+    name: B.新加坡.WhatsApp
+    type: trojan
+    server: cmgz120.q-air.icu
+    port: 18421
+    password: da8f4c57-d022-3ccc-ae2a-a70256d68c32
+    sni: dvm-sg1.q-air.icu
+    tfo: true
+  -
+    name: B.香港2.备用
+    type: vmess
+    server: hgc.q-air.icu
+    port: 33443
+    uuid: da8f4c57-d022-3ccc-ae2a-a70256d68c32
+    alterId: 0
+    cipher: aes-128-gcm
+    udp: true
+    mux: true
+    tfo: true
+    network: ws
+    ws-path: /np
+    ws-headers:
+      Host: hgc.q-air.icu
+    tls: true
+    skip-cert-verify: false
+  -
+    name: B.香港3.备用
+    type: vmess
+    server: hkt.q-air.icu
+    port: 33443
+    uuid: da8f4c57-d022-3ccc-ae2a-a70256d68c32
+    alterId: 0
+    cipher: aes-128-gcm
+    udp: true
+    mux: true
+    tfo: true
+    network: ws
+    ws-path: /np
+    ws-headers:
+      Host: hkt.q-air.icu
+    tls: true
+    skip-cert-verify: false
+  -
+    name: C.印尼.LacakAja
+    type: trojan
+    server: cmgz120.q-air.icu
+    port: 18621
+    password: da8f4c57-d022-3ccc-ae2a-a70256d68c32
+    sni: idn1.q-air.icu
+    tfo: true
+  -
+    name: D.法国
+    type: vmess
+    server: cmgz120.q-air.icu
+    port: 18710
+    uuid: da8f4c57-d022-3ccc-ae2a-a70256d68c32
+    alterId: 0
+    cipher: aes-128-gcm
+    udp: true
+    mux: true
+    tfo: true
+    network: ws
+    ws-path: /np
+    ws-headers:
+      Host: vu-fra1-v2.q-air.icu
+    tls: true
+    skip-cert-verify: false
