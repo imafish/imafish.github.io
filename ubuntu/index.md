@@ -155,7 +155,6 @@ xrand --output eDP --brightness 0.5
 常用软件
 =======
 
-
 WPS
 -------
 [WPS](http://linux.wps.com/)  
@@ -170,6 +169,18 @@ VLC: `sudo apt install vlc`
 
 ### VLC自动搜索、下载并加载字幕
 TODO: Working on it...
+
+
+桌面美化
+=======
+
+Ubuntu当前版本（20.04）使用gnome桌面，gnome-tweaks工具可以很好的配置。  
+```
+sudo apt install gnome-tweaks gnome-shell-extensions gnome-shell-extension-dash-to-panel gnome-shell-extension-autohidetopbar gnome-shell-extension-appindicator gnome-shell-extension-ubuntu-dock
+```
+桌面主题可以从[gnome-look](https://www.gnome-look.org/)下载。窗口主题使用的是yaru，鼠标主题使用Bibata-Modern-DarkRed
+
+壁纸使用variety进行更换。配置文件：[variety.conf](./variety.conf)
 
 
 
