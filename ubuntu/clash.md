@@ -1,8 +1,17 @@
-# Clash的配置
+# clash
 
-## Clash的配置文件
-这里使用nplus作为代理提供商 (https://nplus.in)  
-为了方便的更新代理服务器列表，可以使用clash的proxy-providers功能：使用一个主配置文件[config.yaml](./config.yaml)，其中引用nplus提供的代理服务器地址[nplus.yaml](./nplus.yaml)  
+[dreamacro/clash](https://github.com/Dreamacro/clash)
+
+## 安装
+
+[可执行文件下载地址](https://github.com/Dreamacro/clash/releases/tag/premium)  
+[让clash以service形式运行](https://github.com/Dreamacro/clash/wiki/clash-as-a-daemon)  
+
+## 配置
+
+clash默认使用config.yaml为配置文件。
+通常，不应该经常修改主配置文件，而梯子地址经常变化。我们可以使用`proxy-provider`关键字定义一个梯子列表，这个列表可以存在文件或者云端。这样就可以在不修改主配置文件的情况更新梯子。
+例如：  
 ```
 proxy-providers:
   nplus:
@@ -25,91 +34,15 @@ proxy-groups:
     interval: 300
 ```
 
+### GUI
+1. Dreamacro还有一个clash-dashboard的项目：https://github.com/Dreamacro/clash-dashboard，待研究。
+2. [razor.clash](https://clash.razord.top) 提供在线的clash配置UI。需要clash服务打开控制端口（`external-controller: 127.0.0.1:9090`）
 
-## 在Ubuntu下将clash设置为service
+## xplus.icu
 
-Clash is meant to be run in the background, there's currently no way to implement daemons elegantly with Golang. We can daemonize Clash with third-party tools.
-Clash通常应该作为一个服务运行在后台。但是目前golang语言没有很好的方法支持程序作为服务运行。我们可以使用第三方工具来让clash作为服务运行。
+xplus.icu下载梯子的地址为：https://sub.v2hub.icu/link/OjT5CvEfdurTz6wV?clash=1  
+地址可能很快会失效。官方网站现在已经不提供该下载地址。  
+网站似乎在向其他编码迁移。比如https://sub.v2hub.icu/link/OjT5CvEfdurTz6wV?config=1下载下来的似乎是v2ray编码的梯子列表。  
+未来可能需要将该格式转换为clash格式。工具为(https://github.com/tindy2013/subconverter)
 
-### systemd
-Copy Clash binary to `/usr/local/bin` and configuration files to `/etc/clash`:
-```
-$ cp clash /usr/local/bin
-$ cp config.yaml /etc/clash/
-$ cp Country.mmdb /etc/clash/
-```
-
-Create the systemd configuration file at `/etc/systemd/system/clash.service`:
-```ini
-[Unit]
-Description=Clash daemon, A rule-based proxy in Go.
-After=network.target
-
-[Service]
-Type=simple
-Restart=always
-ExecStart=/usr/local/bin/clash -d /etc/clash
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Launch clashd on system startup with:
-```
-$ systemctl enable clash
-```
-
-Launch clashd immediately with:
-```
-$ systemctl start clash
-```
-
-Check the health and logs of Clash with:
-```
-$ systemctl status clash
-$ journalctl -xe
-```
-
-Credits to [ktechmidas](https://github.com/ktechmidas) for this guide. ([#754](https://github.com/Dreamacro/clash/issues/754))
-
-### Docker
-We recommend deploying Clash with [Docker Compose](https://docs.docker.com/compose/) if you're on Linux. On macOS, it's recommended to use the third-party Clash GUI [ClashX Pro](https://install.appcenter.ms/users/clashx/apps/clashx-pro/distribution_groups/public). ([#770](https://github.com/Dreamacro/clash/issues/770#issuecomment-650951876))
-
-```yaml
-version: '3'
-services:
-  clash:
-    # ghcr.io/dreamacro/clash
-    # ghcr.io/dreamacro/clash-premium
-    # dreamacro/clash
-    # dreamacro/clash-premium
-    image: dreamacro/clash
-    container_name: clash
-    volumes:
-      - ./config.yaml:/root/.config/clash/config.yaml
-      # - ./ui:/ui # dashboard volume
-    ports:
-      - "7890:7890"
-      - "7891:7891"
-      # - "8080:8080" # external controller (Restful API)
-    restart: unless-stopped
-    network_mode: "bridge" # or "host" on Linux
-```
-
-Save as `docker-compose.yaml`, create `config.yaml` in the same directory, and run the below commands to get Clash up:
-
-```
-$ docker-compose up -d
-```
- 
-You can view the logs with:
-
-```
-$ docker-compose logs
-```
-
-Stop Clash with:
-
-```
-$ docker-compose stop
-```
+从这个地址下载的文件为一个旧版本的clash配置文件。需要从中提取出梯子的列表，另存为nplus.yaml，放在`/etc/clash`文件夹下。

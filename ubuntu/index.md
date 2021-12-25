@@ -1,16 +1,98 @@
-一直想使用Linux作为日常桌面，可由于做的是Windows开发，之前只能用虚拟机尝试Linux。  
-最近购入了一台新笔记本（机械革命 code 01），性能还算可以。打算尝试使用Ubuntu作为桌面，在虚拟机里搭建Windows开发环境。  
-在这里记录一下折腾的过程。日后如果需要重做作为参考。
+# Ubuntu折腾笔记
 
 [[_TOC_]]
+
+-------
+
+## 序
+告别了Windows开发，终于可以格式化电脑，装上Ubuntu作为主力桌面了。  
+目前Ubuntu作为桌面的主要问题有：
+1. 微信：至今还没有Linux下的原生版本，使用wine勉强可以运行。
+2. 迅雷：同上
+3. 输入法：google拼音已经多年没有更新了；搜狗拼音也和Windows平台的差了好几版本。但是还算可用。
+4. 游戏：桌面游戏大多没有Linux版本。还好Steam有Linux版本，上面有不少好玩的游戏。不少模拟器也都支持跨平台。另外还有wine和一些其他方案尝试在Linux下原生运行Windows游戏。
+
+### 软件
+日常软件在Ubuntu下大多有较好的选择。
+1. 视频播放
+2. 看图
+3. 截图
+4. 基础图片编辑
+5. 下载（BT）
+6. 浏览器
+7. 文本处理
+8. 简单办公
+9. 输入法
+10. 梯子
+
+### 工作、开发
+1. IDE
+2. 包管理器的代理设置
+3. 容器 -- docker
+4. 开发平台（kubernetes）
+
+### 游戏
+1. 模拟器
+2. Steam
+3. wine
+
+
+-------
+
+## 安装系统
+
+- 和Windows并存
+- Grub
+
+## 使用脚本初始化
+
+该脚本能够安装一些常用软件，并自动进行一些配置，包括shell的启动脚本、VIM的设置，等等。
+
+- 安装git：`sudo apt install git-all`
+- 生成ssh key：`ssh-keygen -C '<user identifier> -t rsa -b 4096`
+- 创建目录：`mkdir src && cd src`
+- 下载脚本：`git clone git@github.com:imafish/ubuntu_scripts.git`
+- 运行：`cd ubuntu_scripts; sudo ./all.sh`
+
+
+## 驱动与配置
+
+### 显卡驱动
+详见[显卡](ubuntu/video_card.md)
+
+## 安装软件
+
+### 梯子
+客户端为clash，项目地址：[dreamacro/clash](https://github.com/Dreamacro/clash)  
+目前使用的梯子provider为[xplus](https://xplus.icu)  
+详见[clash](ubuntu/clash.md)
+
+### chrome
+chrome可以用ubuntu_scripts自动安装
+
+#### 插件：SwitchyOmega
+配置AutoSwitch Rule List：
+
+#### 插件：TamperMonkey
+导入的脚本：
+
+### 输入法
+
+## 个性化设置
+- 壁纸
+- 鼠标指针
+- 桌面风格
+
+## 搭建开发平台
+
+
+
 
 
 
 梯子
 =======
 
-目前使用的梯子provider为[nplus](nplus.icu)  
-客户端为clash，项目地址：[dreamacro/clash](https://github.com/Dreamacro/clash)
 
 nplus让人难受的地方是只支持clash 0.x，而clash最新1.x版本使用了新格式的配置文件。所以只能找旧的clash release使用，还不能开启自动升级。
 
