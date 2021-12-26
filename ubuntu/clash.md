@@ -2,11 +2,13 @@
 [dreamacro/clash](https://github.com/Dreamacro/clash)
 
 
+-------
 ## 安装
 [可执行文件下载地址](https://github.com/Dreamacro/clash/releases/tag/premium)  
 [让clash以service形式运行](https://github.com/Dreamacro/clash/wiki/clash-as-a-daemon)  
 
 
+-------
 ## 配置
 clash默认使用config.yaml为配置文件。启动时通过-d参数指定配置目录。  
 通常，不应该经常修改主配置文件，而梯子地址经常变化。我们可以使用`proxy-provider`关键字定义一个梯子列表，这个列表可以存在文件或者云端。这样就可以在不修改主配置文件的情况更新梯子。  
@@ -37,7 +39,9 @@ proxy-groups:
 1. Dreamacro还有一个clash-dashboard的项目：https://github.com/Dreamacro/clash-dashboard，待研究。
 2. [razor.clash](https://clash.razord.top) 提供在线的clash配置UI。需要clash服务打开控制端口（`external-controller: 127.0.0.1:9090`）
 
+### 自动更新配置及IP数据库
 
+-------
 ## xplus.icu
 
 xplus.icu下载梯子的地址为：https://sub.v2hub.icu/link/OjT5CvEfdurTz6wV?clash=1  
@@ -46,3 +50,10 @@ xplus.icu下载梯子的地址为：https://sub.v2hub.icu/link/OjT5CvEfdurTz6wV?
 未来可能需要将该格式转换为clash格式。工具为(https://github.com/tindy2013/subconverter)
 
 从这个地址下载的文件为一个旧版本的clash配置文件。需要从中提取出梯子的列表，另存为nplus.yaml，放在`/etc/clash`文件夹下，使用`proxy-provider`引用该文件。
+
+
+-------
+## 备选机场
+查资料的时候发现了几个其他备选机场。希望需要的时候不会突然消失不见：  
+[喷射流](https://jetstream.zendesk.com/hc/zh-tw): 使用clash作为首选linux client。或许对新版本的支持会好一些？  
+[DuangCloud](https://www.dcrelay.me/)：卡在注册登录页面
