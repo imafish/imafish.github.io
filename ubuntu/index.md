@@ -3,7 +3,6 @@
 [[_TOC_]]
 
 -------
-
 ## 序
 告别了Windows开发，终于可以格式化电脑，装上Ubuntu作为主力桌面了。  
 目前Ubuntu作为桌面的主要问题有：
@@ -38,12 +37,13 @@
 
 
 -------
-
 ## 安装系统
 
 - 和Windows并存
 - Grub
 
+
+-------
 ## 使用脚本初始化
 
 该脚本能够安装一些常用软件，并自动进行一些配置，包括shell的启动脚本、VIM的设置，等等。
@@ -55,32 +55,57 @@
 - 运行：`cd ubuntu_scripts; sudo ./all.sh`
 
 
+-------
 ## 驱动与配置
 
-### 显卡驱动
-详见[显卡](ubuntu/video_card.md)
+### 挂载硬盘
+挂载硬盘可以使用传统的`fdisk` + `mkfs` + `mount` + `fstab` [reference](https://www.answertopia.com/ubuntu/adding-a-new-disk-drive-to-an-ubuntu-system/)  
+也可以使用ubuntu自带的GUI工具`disks`，这个工具足够完成一般的硬盘挂在任务。但是设置完毕之后（可能）需要重启才会真正加载新硬盘。
 
+### 显卡驱动
+详见[显卡](./video_card.md)
+
+-------
 ## 安装软件
 
 ### 梯子
 客户端为clash，项目地址：[dreamacro/clash](https://github.com/Dreamacro/clash)  
 目前使用的梯子provider为[xplus](https://xplus.icu)  
-详见[clash](ubuntu/clash.md)
+详见[clash](./clash.md)
 
 ### chrome
 chrome可以用ubuntu_scripts自动安装
 
 #### 插件：SwitchyOmega
-配置AutoSwitch Rule List：
+Rule List地址：https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt
 
 #### 插件：TamperMonkey
-导入的脚本：
+脚本主要实现历史价格查询、视频下载、百度网盘直链下载等功能。
+使用的脚本列表：
+- 【玩的嗨】VIP工具箱,百度文库解析导出,全网VIP视频免费破解去广告,一站式音乐搜索下载,获取B站封面,下载B站视频等众多功能聚合 长期更新,放心使用
+- 懒人专用，全网VIP视频免费破解去广告、全网音乐直接下载、百度网盘直接下载等多合一版。长期更新，放心使用。
+- 百度网盘简易下载助手（直链下载复活版）
+
+脚本下载网址：
+- https://greasyfork.org/en
+- https://www.tampermonkey.net/scripts.php
+
 
 ### 输入法
+linux下常用的拼音输入法有Google和搜狗。  
+[详见](./input_method.md)
 
+-------
 ## 个性化设置
-- 壁纸
-- 鼠标指针
+
+### 壁纸
+使用variety工具自动切换桌面壁纸。
+
+### 桌面风格
+
+
+### 鼠标指针
+- - 鼠标指针
 - 桌面风格
 
 ## 搭建开发平台
