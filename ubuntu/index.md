@@ -175,4 +175,8 @@ shell的主题解压到`/usr/share/themes/`；图标和鼠标指针解压到`/us
 -------
 ## 搭建开发平台
 
+### go proxy
+```
+go env -w GOPROXY=https://goproxy.cn,direct
+```
 
