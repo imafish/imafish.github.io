@@ -31,6 +31,31 @@ rcS.d 中的‘S’为“Startup”，所有runlevel均需要的脚本可以放�
 通常不同distribution会有不同的工具来配置service。  
 [这里](../ubuntu/clash.md)是一个在ubuntu下配置clash代理自动启动的步骤。
 
+# grub
+- Ubuntu用grub2代替了传统grub。grub2提供了很多额外的功能，但本质上和grub是同一个原理。  
+- grub2生成一个boot.img(512Byte)写入MBR的第一个扇区，用来引导系统启动；一般boot.img会读取core.img并将控制权转移给core.img。core.img负责进行下一步引导。  
+- grub2命令行常用命令：
+  - ls
+    - 不加参数则列出grub可见的所有设备。加入参数则列出文件列表。
+  - lsmod和insmod
+    - 分别用于列出已加载的模块和调用指定的模块。
+    - 若要导入支持ext文件系统的模块时，只需导入ext2.mod即可，实际上也没有ext3和ext4对应的模块。
+    - 若要引导Windows，需要导入ntfs模块：`insmod ntfs`
+  - linux和linux16
+    - 加载linux内核。必须进跟着使用initrd或initrd16命令加载ramdisk文件。
+    - 必须给内核传入root启动参数。如：`linux16 /vmlinuz-3.10.0-327.el7.x86_64 root=UUID=edb1bf15-9590-4195-aa11-6dac45c7f6f3 ro rhgb quiet LANG=en_US.UTF-8`
+  - initrd和initrd16
+    - 加载ramdisk文件。如`initrd /initramfs-0-rescue-d13bce5e247540a5b5886f2bf8aabb35.img`
+- 如何用grub启动Windows：
+```
+insmod ntfs
+set root=(hdX,gptX)
+chainloader (${root})/EFI/Microsoft/Boot/bootmgfw.efi
+boot
+```
+
+
+
 # [Bash](bash/index)
 
 
