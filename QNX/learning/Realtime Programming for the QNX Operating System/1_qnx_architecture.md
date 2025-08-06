@@ -113,3 +113,10 @@ Further communication is message passing directly to the resource manager.
     - debug "OS" drivers with a high-level (symbolic) debugger
     - export access to your custom driver with a network file system such as NFS or CIFS
 - the ONX C library provides a lot of useful code to minimise the work needed to write a resource manager
+
+## System Libraries
+
+### Many standard functions in the library are built on kernel calls
+
+- usually this is a thin layer, that may just change the format of arguments, e.g.
+  - The POSIX 

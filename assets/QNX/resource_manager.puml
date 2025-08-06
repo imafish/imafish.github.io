@@ -1,19 +1,12 @@
 @startuml
-!define RECTANGLE class
 
-RECTANGLE CLIENT_LIBRARY {
-}
-
-RECTANGLE PROCESS_MANAGER {
-}
-
-RECTANGLE RESMGR {
-}
+(client library) as CLIENT_LIBRARY
+(process manager) as PROCESS_MANAGER
+(resource manager) as RESMGR
 
 CLIENT_LIBRARY -down-> PROCESS_MANAGER : open("/dev/ser1", ...) (1)
 PROCESS_MANAGER -down-> CLIENT_LIBRARY : reply (2)
 CLIENT_LIBRARY -down-> RESMGR : connect (3)
 RESMGR -down-> CLIENT_LIBRARY : response (4)
+
 @enduml
-
-
