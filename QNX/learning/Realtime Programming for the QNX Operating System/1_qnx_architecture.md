@@ -90,7 +90,7 @@ procnto is QNX
   - Creating and managing a name in the pathname space
   - Providing a POSIX interface for clients (e.g. oen(), read(), write(), ...)
 - Can be associated with hardware (such as a serial port, or disk drive)
-- Or canbe a purely software entity (such as `mqueue`, the POSIX queue manager)
+- Or can be a purely software entity (such as `mqueue`, the POSIX queue manager)
 
 ### Opening a resource manager
 
