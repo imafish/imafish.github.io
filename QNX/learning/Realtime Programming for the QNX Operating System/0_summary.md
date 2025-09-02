@@ -1,6 +1,6 @@
 # Summary
 
-Course URL: <https://learning.qnx.com/qnx/courses/20207>
+[Course URL](https://learning.qnx.com/qnx/courses/20207)
 
 This course contains the following modules:
 

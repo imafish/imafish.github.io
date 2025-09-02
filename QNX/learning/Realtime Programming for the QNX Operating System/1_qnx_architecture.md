@@ -119,4 +119,122 @@ Further communication is message passing directly to the resource manager.
 ### Many standard functions in the library are built on kernel calls
 
 - usually this is a thin layer, that may just change the format of arguments, e.g.
-  - The POSIX 
+  - the POSIX function `timer_settime()` calls the kernel function `TimerSettime()`
+    - it changes the time values from the POSIX seconds & nanoseconds to the kernel's 64-bit nanosecond representation
+- we recommend using the standard calls
+  - your code is more portable
+  - you use calls that are going to be more familiar to and readable by your developers
+
+### But QNX is a microkernel
+
+- so many routines that would be a kernel call, or have a dedicated kernel call in a traditional Unix become a message pass
+- they build a message then call MsgSend passing it to a server, e.g.
+  - `read()` builds a message then sends it to a resource manager
+  - `fork()` builds a message and sends it to the process manager
+
+## Shared Objects
+
+- are libraries loaded and linked at run time
+- one copy used (shared) by all programs using library
+- also sometimes called DLLS
+  - shared objects and DLLs use the same architecture to solve different problems
+
+## OS services
+
+### QNX is a microkernel
+
+- most system services are delivered by a process
+- if you want the service, you run the process
+  - if you don't want/need the service, you don't pay the code and data overhead for the service
+- services can be dynamically configured/removed as needed
+
+`pidin` is a system tool that list process in QNX systems.
+
+### Some of the service/processes are
+
+| app        | desc                                |
+| ---------- | ----------------------------------- |
+| random     | Supply random numbers               |
+| mqueue     | POSIX message queues IPC            |
+| dumper     | Core dump creation                  |
+| pipe       | Unix pipes                          |
+| devb-*     | Filesystems, usually rotating media |
+| devf-*     | Filesystems, NOR flash              |
+| io-sock    | TCP/IP stack                        |
+| slogger2   | QNX system logger                   |
+| pci-server | PCI bus access and configuration    |
+
+## Boot Sequence
+
+![boot sequence](../../../assets/QNX/qnx_boot.png)
+
+- IPL (initial program load) code:
+  - does chip selects and sets up RAM, then jumps to startup code
+- startup code:
+  - sets up some hardware and prepares environment for procto
+- procnto:
+  - sets up kernel and runs boot script
+- the boot script contains:
+  - drivers and other processes, including yours
+
+### The `startup` code
+
+The startup code:
+
+- is board-specific
+- tells procnto about core hardware, e.g.:
+  - system RAM amount and layout
+  - interrupt controller(s)
+  - timer chip(s)
+  - special memory regions (e.g. graphics memory)
+  - clusters
+- communicates this data through the system page (syspage)
+  - mapped read-only into every process
+
+## Security - Permissions
+
+QNX uses Unix style permissions:
+
+- for files, directories, and devices
+- user/group/other for read, write, and execute/search
+- from the boot image (ifs, image file system), everything runs as root (uid 0)
+  - this can be changed with:
+    - launcher programs
+    - login
+    - `setuid()` and related C APIs
+    - `setuid` executables
+- qconn runs, and launches, everything as root by default
+  - should never be running on a released system
+
+Controlling system privileges:
+
+- system privileges, e.g.:
+  - changing user id
+  - killing other user's processes,
+  - accessing hardware
+- traditionally controlled on a root/non-root basis
+- QNX uses procmgr abilities for finer-grained control
+  - ability defaults differ for root and non-root processes
+  - for backwards compatibility, root (uid 0) defaults to having all abilities
+  - can be controlled through the procmgr_ability function
+- but, use security policies instead...
+
+On secured systems, system privilege is controlled by security policies:
+
+- policy is written & compiled on host
+  - we recommend starting with a generated policy
+- the compiled policy is loaded into kernel at boot time
+- defines process types
+  - what abilities a process type has
+  - what transitions (to other types) are allowed
+- during system initialization, all process are started with a type
+- separates system privileges (type, abilities) from file/device/directory access (uid, gid)
+
+## Conclusion
+
+- QNX is a microkernel architecture OS
+- most OS services are delivered by cooperating processes
+- processes own resources and threads run code
+- drivers are processes
+- QNX does preemptive scheduling
+  - only READY threads are schedulable, blocked threads are not
