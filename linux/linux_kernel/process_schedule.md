@@ -14,10 +14,15 @@ sudo chrt -rr 99 <process> 2 2
 
 ## trace-cmd
 
+`trace-cmd` to capture kernel events
+
 ## /....
 
 ## perf
 
+perf to capture events in user executables
+
 `sudo perf record -e LLC-load-misses <executable>`
 
+----
 capture data using trace-cmd or perf then visualize using kernelshark
