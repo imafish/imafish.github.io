@@ -184,7 +184,7 @@ Format Specifiers
 
 Here are some common format specifiers you can use with the x command:
 
-- **b**: Byte (8 bits)
+- **b**: Byte (8 bits) (can also display strings)
 - **h**: Halfword (16 bits)
 - **w**: Word (32 bits)
 - **g**: Giant word (64 bits)
@@ -195,7 +195,7 @@ Here are some common format specifiers you can use with the x command:
 - **t**: Binary format
 - **c**: Character
 - **s**: String (null-terminated)
-- **a**: follow symbols
+- **a**: follow symbols (this will display method name, if it is an address to code)
 
 ``` shell
 (gdb) x /10gx $sp
@@ -204,6 +204,11 @@ Here are some common format specifiers you can use with the x command:
 (gdb) x/5dw 0x7fffffffe000
 (gdb) x/4ho 0x7fffffffe000
 (gdb) x/s 0x7fffffffe000
+
+# x/s display 200 characters max (hex C8 is 200)
+# to display the full string:
+(gdb) x/8s <addr>
+# this will display 8 chunks. if it still doesn't show the full string, increase the number of chunks
 ```
 
 ## Breakpoints
@@ -281,8 +286,29 @@ If you want to stop execution when a variable changes, you can set a watchpoint:
 
 ### ni
 
-- **Function**: next disassembly instructions
+- **Function**: next assembly instructions
 - **Use Case**: use when you want to execution code in assembly
+
+## reverse execution
+
+You may record the execution of code, then 'replay' it. enable it by
+
+``` shell
+gdb <executable>
+
+(gdb) target record
+(gdb) run
+
+# then go back by
+(gdb) reverse-step
+(gdb) reverse-next
+(gdb) reverse-continue
+(gdb) reverse-finish
+(gdb) reverse-nexti
+(gdb) reverse-stepi
+
+
+```
 
 ## Threads (TODO)
 
