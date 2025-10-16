@@ -1,3 +1,11 @@
 {
-  "plantuml.render": "Local"
+  "plantuml.render": "Local",
+  "markdown.styles": [
+    "assets/github-markdown.css"
+  ],
+  "cSpell.words": [
+    "sharedlibrary",
+    "tbreak",
+    "watchpoint"
+  ],
 }
