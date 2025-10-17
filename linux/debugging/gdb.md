@@ -307,7 +307,6 @@ gdb <executable>
 (gdb) reverse-nexti
 (gdb) reverse-stepi
 
-
 ```
 
 ## Threads (TODO)
