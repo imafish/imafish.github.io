@@ -252,6 +252,17 @@ If you want to stop execution when a variable changes, you can set a watchpoint:
 (gdb) watch variable_name
 ```
 
+### Loop threads
+
+``` shell
+(gdb) t a <thread_list> <command>
+
+# e.g.
+(gdb) t a a bt # for all threads, show backtrace
+(gdb) t a 1 2 3 4 bt # for thread 1, 2, 3, 4, show backtrace
+(gdb) t a 1-3 6 bt # for thread 1, 2, 3, 6, show backtrace
+```
+
 ## Execution
 
 ### next
@@ -324,6 +335,32 @@ gdb <executable>
 (gdb) disassemble
 (gdb) ni
 ```
+
+## Record output to file
+
+``` shell
+(gdb) set logging file my_log.txt # gdb.txt is the default
+(gdb) set logging on
+...
+...
+(gdb) set logging off
+```
+
+### Append to log file
+
+``` shell
+(gdb) set logging append on
+```
+
+### Log only output (not commands)
+
+``` shell
+(gdb) set logging redirect on
+...
+...
+(gdb) set logging redirect off
+```
+
 
 ## more
 
