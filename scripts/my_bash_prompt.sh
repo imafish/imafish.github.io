@@ -19,6 +19,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
  
 if [[ -f "$current_dir/my_icon.sh" ]]; then
+  . "$current_dir/my_icon.sh"
+fi
+if [[ -f "$current_dir/.my_icon.sh" ]]; then
   . "$current_dir/.my_icon.sh"
 fi
 if [[ -z "$PS_ICON" ]]; then
