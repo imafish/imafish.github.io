@@ -1,6 +1,30 @@
+
+function run_if_exists() {
+  local base_folder=$1
+  local file=$2
+  local file1="$base_folder/$file"
+  local file2="$base_folder/.$file"
+  if [[ -f "$file1" ]]; then
+    . "$file1"
+  elif [[ -f "$file2" ]]; then
+    . "$file2"
+  fi
+}
 current_folder=$(dirname "$(readlink -f "$BASH_SOURCE")")
-[ -f $current_folder/.my_bash_prompt.sh ] && source $current_folder/.my_bash_prompt.sh
-[ -f $current_folder/my_bash_prompt.sh ] && source $current_folder/my_bash_prompt.sh
+run_if_exists "$current_folder" "my_bash_prompt.sh"
+
+function hard_link_if_exists() {
+  source_file=$1
+  target_file=$2
+  if [[ -f "$source_file" && ! -f "$target_file" ]]; then
+    ln "$source_file" "$target_file"
+  fi
+}
+hard_link_if_exists "$current_folder/my_bash_prompt.sh" "$HOME/.my_bash_prompt.sh"
+hard_link_if_exists "$current_folder/my_icon.sh" "$HOME/.my_icon.sh"
+hard_link_if_exists "$current_folder/my_bashrc.sh" "$HOME/.my_bashrc.sh"
+hard_link_if_exists "$current_folder/my_bash_profile.sh" "$HOME/.my_bash_profile.sh"
+
 
 #
 # exports

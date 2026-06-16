@@ -109,13 +109,23 @@ unset color_prompt force_color_prompt
  
 # show avatar #ubuntu_scripts#
 if [ `tput colors` -gt 255 ]; then
-    cat ~/.avatar_256color.txt
+  if [[ -f "$current_dir/avatar_256color.txt" ]]; then
+    cat "$current_dir/avatar_256color.txt"
     echo
+  elif [[ -f "$current_dir/.avatar_256color.txt" ]]; then
+    cat "$current_dir/.avatar_256color.txt"
+    echo
+  fi
 else
-    cat ~/.avatar_8color.txt
+  if [[ -f "$current_dir/avatar_8color.txt" ]]; then
+    cat "$current_dir/avatar_8color.txt"
     echo
+  elif [[ -f "$current_dir/.avatar_8color.txt" ]]; then
+    cat "$current_dir/.avatar_8color.txt"
+    echo
+  fi
 fi
  
-[ -d /usr/games ] && PATH=$PATH:/usr/games
 fortune
 echo
+
