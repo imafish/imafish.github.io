@@ -78,6 +78,7 @@ if [[ -f $HOME/.messages ]]; then
 fi
 
 folders_to_path=(
+  "/usr/games"
   "/usr/local/go/bin"
   "$HOME/bin"
   "$HOME/.local/bin"
