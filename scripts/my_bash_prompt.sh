@@ -126,6 +126,7 @@ else
   fi
 fi
  
+[[ -d "/usr/games" ]] && PATH="/usr/games:$PATH"
 fortune
 echo
 
